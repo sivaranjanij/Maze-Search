@@ -1,18 +1,17 @@
 import matplotlib.pyplot as plt
 
-"""
-Plots the final state of the maze and saves the plot as an image file.
-
-Parameters:
-maze (2D array-like): The maze to be plotted, where each element represents a cell in the maze.
-s (str): A string indicating the type of search algorithm used. 
-         If 'a', the plot will be saved as 'a_star-new.png'.
-         Otherwise, the plot will be saved as 'bfs-new.png'.
-
-Returns:
-None
-"""
 def maze_plot_final(maze, search_algorithm):
+    """
+    Plots the final state of the maze and saves the plot as an image file.
+
+    Parameters:
+        maze (2D array-like): The maze to be plotted, where each element represents a cell in the maze.
+        search_algorithm (str): A string indicating the type of search algorithm used. 
+
+    Returns:
+        None
+    """
+
     # Create a new figure and axis for the plot
     fig, ax = plt.subplots()
 
