@@ -1,15 +1,12 @@
 from generator.maze_generator import maze_generator
 from util.maze_plotter import maze_plotter
 from search_algorithms.bread_first_search import breadth_first_search
-import sys
+import argparse
 
 # from search_algorithms.depth_first_search import depth_first_search
 # from search_algorithms.a_star import a_star_search
 
 def main(search_algorithm):
-    if search_algorithm not in ["bfs", "dfs", "a-star"]:
-        raise ValueError("Invalid search algorithm. Choose between 'bfs', 'dfs', or 'a-star'.")
-
     maze = maze_generator(100, 0.3)
 
     if search_algorithm == "bfs":
@@ -20,8 +17,9 @@ def main(search_algorithm):
     #     path = a_star_search(maze)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python main.py <search_algorithm>")
-        sys.exit(1)
-    search_algorithm = sys.argv[1]
+    parser = argparse.ArgumentParser(description="Maze Search Algorithm")
+    parser.add_argument("--algorithm", required=True, choices=["bfs", "dfs", "a-star"], help="Search algorithm to use")
+    args = parser.parse_args()
+
+    search_algorithm = args.algorithm
     main(search_algorithm)
