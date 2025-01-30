@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-def maze_plot_final(maze, search_algorithm):
+def maze_plotter(maze, search_algorithm):
     """
     Plots the final state of the maze and saves the plot as an image file.
 
