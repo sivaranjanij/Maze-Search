@@ -2,6 +2,39 @@ from util.maze_plotter import maze_plotter
 from util.traversable_neighbors import traversable_neighbors
 
 
+def dfs_path_printer(dfs_maze, dfs_path):
+    """
+    Marks the path from the source node to the destination node in a DFS (Depth-First Search) explored maze.
+
+    Parameters:
+    dfs_maze : list of lists (2D matrix)
+        An nxn matrix representing the maze, where different values indicate walls, open paths, or visited cells.
+
+    dfs_path : list of tuples
+        A list of coordinates (row, col) representing the path taken by DFS.
+
+    Functionality:
+    - Marks the start and destination nodes distinctly.
+    - Marks the path taken by DFS in the maze.
+
+    Returns:
+    None
+    """
+
+    for node in dfs_path:
+        # Mark the current node as part of the path
+        dfs_maze[node] = -2
+
+    # Mark the destination node with a special identifier (-2) to highlight it in the visualization.
+    dfs_maze[len(dfs_maze) - 1][len(dfs_maze) - 1] = -2
+
+    # Mark the source node with the same identifier to differentiate it in the visualization.
+    dfs_maze[0][0] = -2
+
+    maze_plotter(dfs_maze, "dfs", len(dfs_path))
+    return
+
+
 def depth_first_search(dfs_maze, display=True):
     """
     Implements the Depth First Search (DFS) approach to solve a given maze.
@@ -21,13 +54,10 @@ def depth_first_search(dfs_maze, display=True):
     # Create a copy of the maze to avoid modifying the original input
     dfs_maze = dfs_maze.copy()
 
-    # Set the source of the maze (top-left corner) from where DFS will begin
-    source = (0, 0)
+    # Define the source (starting point) and destination (goal).
+    source, destination = (0, 0), (len(dfs_maze) - 1, len(dfs_maze) - 1)
 
-    # Set the destination of the maze (bottom-right corner) to be reached
-    destination = (len(dfs_maze) - 1, len(dfs_maze) - 1)
-
-    # Mark the source as visited by setting its value to -1
+    # Mark the source node with the same identifier to differentiate it in the visualization.
     dfs_maze[source] = -1
 
     # Initialize the DFS stack with the source node
@@ -73,7 +103,7 @@ def depth_first_search(dfs_maze, display=True):
                     pathFound = 1
                     if display:
                         #If the display parameter is set to true the plot the path
-                        maze_plotter(dfs_maze, "dfs")    
+                        dfs_path_printer(dfs_maze, dfs_path)
                     return 1
                 
                 # Append the neighbor node to the DFS stack for further exploration

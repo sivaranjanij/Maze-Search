@@ -8,7 +8,12 @@ import argparse
 # from search_algorithms.a_star import a_star_search
 
 def main(search_algorithm):
-    maze = maze_generator(100, 0.3)
+    maze = maze_generator(100, 0.2)
+
+    if search_algorithm == "all":
+        breadth_first_search(maze)
+        depth_first_search(maze)
+        # a_star_search(maze)
 
     if search_algorithm == "bfs":
         path = breadth_first_search(maze)
@@ -19,7 +24,7 @@ def main(search_algorithm):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Maze Search Algorithm")
-    parser.add_argument("--algorithm", required=True, choices=["bfs", "dfs", "a-star"], help="Search algorithm to use")
+    parser.add_argument("--algorithm", required=True, choices=["bfs", "dfs", "a-star", "all"], help="Search algorithm to use")
     args = parser.parse_args()
 
     search_algorithm = args.algorithm

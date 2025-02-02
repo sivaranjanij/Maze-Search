@@ -15,20 +15,20 @@ def traversable_neighbors(maze, node):
                               within the maze boundaries, not a wall, and not already visited.
     """
 
-    #Sets the current node and initializes an empty neighbors array
+    # Sets the current node and initializes an empty neighbors array
     (i,j) = node
     neighbors = []
 
-    #The offsets for the four possible neighbors of a cell
-    # (1, 0) -> Down, (0, 1) -> Right, (0, -1) -> Left, (-1, 0) -> Up
-    neighbor_offsets = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+    # The offsets for the four possible neighbors of a cell
+    # (0, -1) -> left, (-1, 0) -> up, (1, 0) -> down, (0, 1) -> right
+    neighbor_offsets = [(0, -1), (-1, 0), (1, 0), (0, 1)]
 
     for offset in neighbor_offsets:
         x, y = i + offset[0], j + offset[1]
 
-        #Checks if the cell is within the maze boundaries and is not a wall(1) or already visited(-1)
+        # Checks if the cell is within the maze boundaries and is not a wall(1) or already visited(-1)
         if 0 <= x < len(maze) and 0 <= y < len(maze[0]) and maze[x][y] != 1 and maze[x][y] != -1:
             neighbors.append((x, y))
 
-    #Returns the list containing the traversable neighbors
+    # Returns the list containing the traversable neighbors
     return neighbors

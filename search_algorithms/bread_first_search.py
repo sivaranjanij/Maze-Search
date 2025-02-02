@@ -35,7 +35,7 @@ def bfs_path(bfs_maze, cur_node, bfs_parent):
     bfs_maze[0,0] = -2
 
     # Initialize path length count (including the source and destination).
-    count = 2
+    path_length = 2
     temp_node = cur_node # Start backtracking from the destination node.
 
     # Trace the path backward from the destination node to the source node.
@@ -49,13 +49,10 @@ def bfs_path(bfs_maze, cur_node, bfs_parent):
         temp_node = bfs_parent[i][j]
 
         # Increment path length count.
-        count += 1
-
-    # Output the total number of nodes in the shortest path.
-    print("Path length : ",count)
+        path_length += 1
 
     # Visualize the marked path using maze_plotter.
-    maze_plotter(bfs_maze,"bfs")
+    maze_plotter(bfs_maze, "bfs", path_length)
     return
 
 
@@ -138,5 +135,5 @@ def breadth_first_search(bfs_maze,display=True):
         if display:
             # If visualization is enabled, display the explored maze.
             print("No Path Found :(")
-            maze_plotter(bfs_maze)
+            maze_plotter(bfs_maze, "bfs", 0)
         return 0
