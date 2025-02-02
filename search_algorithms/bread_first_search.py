@@ -52,7 +52,7 @@ def bfs_path(bfs_maze, cur_node, bfs_parent):
         path_length += 1
 
     # Visualize the marked path using maze_plotter.
-    maze_plotter(bfs_maze, "bfs", path_length)
+    maze_plotter(bfs_maze, "bfs", path_length+1)
     return
 
 
