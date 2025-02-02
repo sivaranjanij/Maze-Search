@@ -20,7 +20,8 @@ def traversable_neighbors(maze, node):
     neighbors = []
 
     #The offsets for the four possible neighbors of a cell
-    neighbor_offsets = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+    # (1, 0) -> Down, (0, 1) -> Right, (0, -1) -> Left, (-1, 0) -> Up
+    neighbor_offsets = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 
     for offset in neighbor_offsets:
         x, y = i + offset[0], j + offset[1]
