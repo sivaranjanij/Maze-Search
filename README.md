@@ -59,7 +59,7 @@ python main.py --algorithm bfs
 
 The program will display the maze and the path found by the selected algorithm. Ensure you have a graphical environment to view the visualizations.
 
-<img src="figures/bfs-maze.png" width="300" />
+<img src="figures/bfs-maze.png" width="300" />  <img src="figures/dfs-maze.png" width="300" />
 
 
 
